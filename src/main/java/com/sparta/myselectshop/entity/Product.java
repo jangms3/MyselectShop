@@ -44,7 +44,7 @@ public class Product extends Timestamped {
 
     //product -> product_folder 를 조회할 수 있어야 함.
     @OneToMany (mappedBy = "product")
-    private List<ProductFolder> productFolders = new ArrayList<ProductFolder>();
+    private List<ProductFolder> productFolderList = new ArrayList<>();
 
 
 

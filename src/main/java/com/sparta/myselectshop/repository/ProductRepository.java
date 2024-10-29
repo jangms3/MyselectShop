@@ -9,6 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
-    Page<Product> findAllByUser(User user, Pageable pageable); // 왜 user 를 넣었는지 생각.  public 은 defualt/
+    Page<Product> findAllByUser(User user, Pageable pageable); // 왜 user 를 넣었는지 생각.  public 은 defualt
 
 }
