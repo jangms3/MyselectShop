@@ -1,6 +1,6 @@
 package com.sparta.myselectshop.scheduler;
 
-import com.sparta.myselectshop.Repository.ProductRepository;
+import com.sparta.myselectshop.repository.ProductRepository;
 import com.sparta.myselectshop.entity.Product;
 import com.sparta.myselectshop.naver.dto.ItemDto;
 import com.sparta.myselectshop.naver.service.NaverApiService;
