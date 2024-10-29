@@ -1,5 +1,6 @@
 package com.sparta.myselectshop.service;
 
+import com.sparta.myselectshop.entity.User;
 import com.sparta.myselectshop.repository.ProductRepository;
 import com.sparta.myselectshop.dto.ProductMypriceRequestDto;
 import com.sparta.myselectshop.dto.ProductRequestDto;
@@ -22,7 +23,7 @@ public class ProductService {
 
     public static final int MIN_MY_PRICE = 100;
 
-    public ProductResponseDto createProduct(ProductRequestDto requestDto) {
+    public ProductResponseDto createProduct(ProductRequestDto requestDto, User user) {
         Product product = productRepository.save(new Product(requestDto));
         return new ProductResponseDto(product);
     }
@@ -43,8 +44,8 @@ public class ProductService {
         return new ProductResponseDto(product);
     }
 
-    public List<ProductResponseDto> getProducts() {
-        List<Product> products = productRepository.findAll();
+    public List<ProductResponseDto> getProducts(User user) {
+        List<Product> products = productRepository.findAllByUser(user);
         List<ProductResponseDto> responseDtoList = new ArrayList<>();
 
         for (Product product : products) { //향상된 for 문
@@ -61,5 +62,16 @@ public class ProductService {
                 new NullPointerException("해당 상품은 존재하지 않습니다.")
         );
         product.updateByItemDto(itemDto);
+    }
+
+    public List<ProductResponseDto> getAllProducts() {
+        List<Product> products = productRepository.findAll();
+        List<ProductResponseDto> responseDtoList = new ArrayList<>();
+
+        for (Product product : products) { //향상된 for 문
+            responseDtoList.add(new ProductResponseDto(product)); //productResponseDto에 있는 product 생성자
+        }
+
+        return responseDtoList;
     }
 }
